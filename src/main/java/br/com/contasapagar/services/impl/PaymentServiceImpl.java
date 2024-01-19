@@ -5,6 +5,7 @@ import br.com.contasapagar.entities.Payment;
 import br.com.contasapagar.mappers.PaymentMapper;
 import br.com.contasapagar.repositories.PaymentRepository;
 import br.com.contasapagar.services.PaymentService;
+import br.com.contasapagar.services.exceptions.ResourceAlreadyExistsException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +21,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Transactional
     public PaymentDto create(PaymentDto dto) {
         Optional<Payment> paymentAlreadyExists = paymentRepository.findByName(dto.getName());
-        if(paymentAlreadyExists.isPresent()) throw new RuntimeException("This payment is already exists");
+        if(paymentAlreadyExists.isPresent()) throw new ResourceAlreadyExistsException("This payment is already exists");
         Payment createdPayment = PaymentMapper.mapDtoToEntity(dto);
         createdPayment = paymentRepository.save(createdPayment);
         return PaymentMapper.mapEntityToDto(createdPayment);
