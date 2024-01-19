@@ -29,6 +29,6 @@ jobs:
         DEFAULT_BRANCH: dev
          # To report GitHub Actions status checks
         GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
-        LINT_RULES_PATH: /src/main/java/br/com/contasapagar
+        LINT_RULES_PATH: ./src/
           
 
