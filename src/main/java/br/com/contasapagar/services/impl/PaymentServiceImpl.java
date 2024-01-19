@@ -9,6 +9,7 @@ import br.com.contasapagar.services.exceptions.ResourceAlreadyExistsException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,5 +26,12 @@ public class PaymentServiceImpl implements PaymentService {
         Payment createdPayment = PaymentMapper.mapDtoToEntity(dto);
         createdPayment = paymentRepository.save(createdPayment);
         return PaymentMapper.mapEntityToDto(createdPayment);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<PaymentDto> findAll() {
+        List<Payment> paymentsTypes = paymentRepository.findAll();
+        return paymentsTypes.stream().map(PaymentMapper::mapEntityToDto).toList();
     }
 }
