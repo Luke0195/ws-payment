@@ -29,13 +29,13 @@ jobs:
     - name: Docker Login
       uses: docker/login-action@v3.0.0
       with:
-        # Server address of Docker registry. If not set then will default to Docker Hub
-      # registry: # optional
         # Username used to log against the Docker registry
-    #   username: # optional
+       username: ${{ secrets.DOCKER_USERNAME }}
         # Password or personal access token used to log against the Docker registry
-     #  password: # optional
+       password: ${{ secrets.DOCKER_PASSWOR }}
         # Specifies whether the given registry is ECR (auto, true or false)
-     #  ecr: # optional, default is auto
+       ecr: auto
         # Log out from the Docker registry at the end of a job
-       #logout: # optional, default is true
+       logout: false
+    - name:  Test Runner
+      run: echo ${{ github.run_number }} 
