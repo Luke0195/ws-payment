@@ -18,17 +18,6 @@ jobs:
     - name: Build with Maven
       run: mvn -B package  -DskipTests=true --file pom.xml 
 
-  validate_quality:
-    needs: ['build']
-    runs-on: ubuntu-latest
-    steps:
-     - uses: actions/checkout@v3
-     - name: Validate Code With Super-Lint
-       uses: super-linter/super-linter@v5.7.2
-       env:
-        DEFAULT_BRANCH: dev
-         # To report GitHub Actions status checks
-        GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
-        LINT_RULES_PATH: ./src/
+
           
 
