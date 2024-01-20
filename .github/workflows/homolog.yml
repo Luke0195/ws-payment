@@ -32,7 +32,7 @@ jobs:
         # Username used to log against the Docker registry
        username: ${{ secrets.DOCKER_USERNAME }}
         # Password or personal access token used to log against the Docker registry
-       password: ${{ secrets.DOCKER_PASSWOR }}
+       password: ${{ secrets.DOCKER_PASSWORD }}
         # Specifies whether the given registry is ECR (auto, true or false)
        ecr: auto
         # Log out from the Docker registry at the end of a job
