@@ -10,7 +10,6 @@ import java.util.UUID;
 
 @Repository
 public interface PaymentRepository extends JpaRepository<Payment, UUID> {
-
     @Query(value = "SELECT obj FROM Payment as obj where LOWER(obj.name) = LOWER(:name)")
     Optional<Payment> findByName(String name);
 }
