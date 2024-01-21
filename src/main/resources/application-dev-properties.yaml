@@ -1,10 +1,9 @@
-
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: ${DATABASE_USER}
-    password: ${DATABASE_PASSWORD}
-    url: ${DATABASE_URL}
+    username: root
+    password: root
+    url: jdbc:postgresql://postgresDb:5432/contasapp
   jpa:
     hibernate:
       ddl-auto: update
