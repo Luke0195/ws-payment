@@ -16,3 +16,4 @@ Campos obrigatório para criação de um Pagamento.
 
 * [X] O sistema não deve permitir cadastrar um nome do tipo de pagamento nulo ou vazio.
 * [X] O sistema não deve permitir cadastrar um tipo de pagamento com mesmo nome.
+* [ ] O sistema não deve permitir criar um cliente com nome

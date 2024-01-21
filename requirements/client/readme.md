@@ -25,4 +25,7 @@ Campos obrigatório para criação de um Cliente.
 
 > #### Requisitos não Funcionais.
 * [ ] O sistema não deve permitir cadastrar um cliente com um código já existente.
-* [ ] O sistema não deve permtiri cadastrar um cliente com um email já existente.
+* [ ] O sistema não deve permitir cadastrar um cliente com um email já existente.
+* [ ] O sistema não deve permitir cadastrar um cliente com um nome vazio ou nulo.
+* [ ] O sistema não deve permitir cadastrar um cliente com um code vazio ou nulo.
+* [ ] O sistema não deve permitir cadastrar um cliente com um email vazio ou nulo.
