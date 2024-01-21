@@ -25,8 +25,7 @@ public class ClientDto implements Serializable {
     private UUID id;
     @NotBlank(message="The field name must be required")
     private String name;
-    @CPF(message=" The field code must be cpf or cnpj")
-    @CNPJ(message = "The code must be cpf or cnpj")
+    @NotBlank(message="The filed code must be required")
     private String code;
     @Email(message = "Please provided a valid email")
     @NotBlank(message = "The field email must be required")

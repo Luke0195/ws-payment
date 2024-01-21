@@ -39,7 +39,7 @@ public class ControllerExceptionHandler {
         });
         StandardErrorDto error = FactoryHepler.mapDtoWithValidationListError(
                 getHttpStatus(HttpStatus.BAD_REQUEST),
-                "This entity already exists!",
+                "Fail on validate fields!",
                 getRequestUri(request),
                 "Validation Fails", errors);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);

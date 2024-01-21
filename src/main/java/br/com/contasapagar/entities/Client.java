@@ -13,8 +13,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table
-@Entity(name="tb_client")
+@Entity
+@Table(name="tb_client")
 public class Client implements Serializable {
 
     @Id

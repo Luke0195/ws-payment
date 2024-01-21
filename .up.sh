@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker-compose up
+rm -rf target && docker-compose up --build

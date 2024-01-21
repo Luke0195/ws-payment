@@ -2,6 +2,7 @@ package br.com.contasapagar.services.impl;
 
 import br.com.contasapagar.dtos.ClientDto;
 import br.com.contasapagar.entities.Client;
+import br.com.contasapagar.mappers.ClientMapper;
 import br.com.contasapagar.repositories.ClientRepository;
 import br.com.contasapagar.services.ClientService;
 import br.com.contasapagar.services.exceptions.ResourceAlreadyExistsException;
@@ -28,8 +29,9 @@ public class ClientServiceImpl implements ClientService {
         if(clientAlreadyExists.isPresent()) throw new ResourceAlreadyExistsException("This code was already taken!");
         clientAlreadyExists = clientRepository.findByEmail(dto.getEmail());
         if(clientAlreadyExists.isPresent()) throw new ResourceAlreadyExistsException("This email was already taken!");
-
-
+        Client  client = ClientMapper.mapDtoToEntity(dto);
+        client = clientRepository.save(client);
+        return ClientMapper.mapEntityToDto(client);
     }
 
     @Override
