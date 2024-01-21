@@ -47,7 +47,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: luke0195/contasapp:${{github.run_number}}
+        tags: luke0195/contasapp:latest
         github-token: ${{ secrets.GIT_HUB_TOKEN }}
               
             
