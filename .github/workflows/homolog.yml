@@ -37,5 +37,29 @@ jobs:
        ecr: auto
         # Log out from the Docker registry at the end of a job
        logout: false
-
-              
+    - name: Docker Metadata action
+      uses: docker/metadata-action@v5.5.0
+      with:
+        context: workflow
+        # List of Docker images to use as base name for tags
+      # images: # optional
+        # List of tags as key-value pair attributes
+       # tags: # optional
+        # Flavors to apply
+      #  flavor: # optional
+        # List of custom labels
+       # labels: # optional
+        # List of custom annotations
+      #  annotations: # optional
+        # Separator to use for tags output (default \n)
+     #   sep-tags: # optional
+        # Separator to use for labels output (default \n)
+      #  sep-labels: # optional
+        # Separator to use for annotations output (default \n)
+      #  sep-annotations: # optional
+        # Bake target name (default docker-metadata-action)
+      #  bake-target: # optional
+        # GitHub Token as provided by secrets
+        github-token: ${{secrets.GIT_HUB_TOKEN}}
+    
+                  
