@@ -60,9 +60,9 @@ jobs:
       uses: johnbeynon/render-deploy-action@v0.0.8
       with:
         # ID of the service to deploy
-        service-id: sfgjsg
+        service-id: ${{secrets.RENDER_SERVICE_ID}}
         # A Render API key
-        api-key: sjgsjg
+        api-key: ${{secrets.RENDER_API_KEY}}
               
     
               
