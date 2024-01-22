@@ -8,6 +8,7 @@ import br.com.contasapagar.services.ClientService;
 import br.com.contasapagar.services.exceptions.ResourceAlreadyExistsException;
 import br.com.contasapagar.services.exceptions.ResourceNotExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 
 import org.springframework.data.domain.PageImpl;
@@ -67,7 +68,14 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
+        try{
+          Optional<Client> findClientById = clientRepository.findById(UUID.fromString(id));
+          if(findClientById.isEmpty()) throw new ResourceNotExistsException("Id not found!");
+          this.clientRepository.deleteById(findClientById.get().getId());
+        }catch (EmptyResultDataAccessException e){
+            throw new ResourceNotExistsException("Id not found");
+        }
 
     }
 }

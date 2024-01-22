@@ -42,4 +42,10 @@ public class ClientController {
         return ResponseEntity.status(HttpStatus.OK).body(this.clientServiceImpl.findClientById(id));
     }
 
+    @DeleteMapping("clients/{id}")
+    public ResponseEntity<Void> deleteClientById(@PathVariable String id){
+        this.clientServiceImpl.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
 }

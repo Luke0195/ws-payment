@@ -14,5 +14,5 @@ public interface ClientService {
 
     ClientDto updateClient(Long id, ClientDto dto);
 
-    void delete(Long id);
+    void delete(String id);
 }
