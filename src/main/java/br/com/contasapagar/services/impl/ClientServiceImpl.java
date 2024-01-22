@@ -8,14 +8,19 @@ import br.com.contasapagar.services.ClientService;
 import br.com.contasapagar.services.exceptions.ResourceAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ClientServiceImpl implements ClientService {
+
     private final ClientRepository clientRepository;
     @Autowired
     public ClientServiceImpl(ClientRepository clientRepository){
@@ -35,8 +40,19 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Page<ClientDto> findAllPaged(Pageable pageable) {
-        return null;
+    @Transactional(readOnly = true)
+    public Page<ClientDto> findAllPaged(Pageable pageable, String name) {
+        System.out.println(name);
+        if(name.equalsIgnoreCase("")){
+            return this.clientRepository.findAll(pageable).map(ClientMapper::mapEntityToDto);
+        }else{
+           List<Client> sortedClients = clientRepository.searchClientsByName(name.toLowerCase());
+           for(Client i: sortedClients){
+               System.out.println("SELECT ITEM"+  i);
+           }
+           PageImpl<Client> pageImpl = new PageImpl<>(sortedClients,pageable, sortedClients.size());
+           return pageImpl.map(ClientMapper::mapEntityToDto);
+        }
     }
 
     @Override
