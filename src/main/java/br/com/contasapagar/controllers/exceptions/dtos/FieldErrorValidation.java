@@ -12,7 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FieldErrorValidation  implements Serializable {
+public class FieldErrorValidation implements Serializable {
 
     @JsonProperty("field_name")
     private String fieldName;

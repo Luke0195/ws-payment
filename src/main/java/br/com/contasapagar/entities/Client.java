@@ -14,10 +14,20 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "tb_payment")
-public class Payment implements Serializable {
+@Table(name = "tb_client")
+public class Client implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
+    @Column(unique = true)
+    private String code;
+    @Column(unique = true)
+    private String email;
+    private String phone;
+    private String address;
+    @Column(name = "sub_locality")
+    private String sublocality;
+    private String city;
 }
