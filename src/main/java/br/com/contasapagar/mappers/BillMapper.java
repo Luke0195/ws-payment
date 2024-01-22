@@ -30,6 +30,7 @@ public final class BillMapper {
     public static BillDto mapBillEntityToDto(Bill entity){
         return BillDto
                 .builder()
+                .id(entity.getId())
                 .description(entity.getDescription())
                 .validateDate(entity.getValidateDate())
                 .paymentDate(entity.getPaymentDate())
