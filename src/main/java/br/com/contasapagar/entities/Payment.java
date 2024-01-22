@@ -22,6 +22,5 @@ public class Payment implements Serializable {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
-    @OneToMany(mappedBy = "payment")
-    private List<Bill> billList = new ArrayList<>();
+
 }

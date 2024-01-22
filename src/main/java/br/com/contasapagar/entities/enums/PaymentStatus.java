@@ -5,13 +5,13 @@ import lombok.Getter;
 @Getter
 public enum PaymentStatus {
 
-    CHECK(0),
-    MONEY(1),
-    PIX(2);
+    CHECK(0L),
+    MONEY(1L),
+    PIX(2L);
 
-    private final Integer status;
+    private final Long status;
 
-    PaymentStatus(Integer status) {
+    PaymentStatus(Long status) {
         this.status = status;
     }
 

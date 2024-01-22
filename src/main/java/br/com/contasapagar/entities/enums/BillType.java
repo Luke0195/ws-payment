@@ -5,12 +5,12 @@ import lombok.Getter;
 @Getter
 public enum BillType {
 
-    IN(1), // Compensado
-    OUT(0); // Pagamento não realizado
+    IN(1L), // Compensado
+    OUT(0L); // Pagamento não realizado
 
-    private final Integer status;
+    private final Long status;
 
-    BillType(Integer status) {
+    BillType(Long status) {
         this.status = status;
     }
 

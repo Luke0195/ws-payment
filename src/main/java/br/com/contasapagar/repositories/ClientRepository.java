@@ -14,9 +14,7 @@ import java.util.UUID;
 @Repository
 public interface ClientRepository extends JpaRepository<Client, UUID> {
     Optional<Client> findByEmail(String email);
-
     Optional<Client> findByCode(String code);
-
     @Query(value = "SELECT obj FROM Client as obj WHERE lower(obj.name) like  %:name%")
     List<Client> searchClientsByName(@Param("name") String name);
 }

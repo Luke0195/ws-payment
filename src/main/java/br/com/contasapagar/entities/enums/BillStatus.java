@@ -5,11 +5,11 @@ import lombok.Getter;
 @Getter
 public enum BillStatus {
 
-    INT(1),
-    OUT(0);
-    private final Integer status;
+    INT(1L),
+    OUT(0L);
+    private final Long status;
 
-    BillStatus(Integer status) {
+    BillStatus(Long status) {
         this.status = status;
     }
 }

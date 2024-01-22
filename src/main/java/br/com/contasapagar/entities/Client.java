@@ -32,6 +32,5 @@ public class Client implements Serializable {
     @Column(name = "sub_locality")
     private String sublocality;
     private String city;
-    @OneToMany(mappedBy ="client")
-    private List<Bill> billList = new ArrayList<>();
+
 }
