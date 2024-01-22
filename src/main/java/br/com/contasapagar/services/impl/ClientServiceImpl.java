@@ -6,17 +6,18 @@ import br.com.contasapagar.mappers.ClientMapper;
 import br.com.contasapagar.repositories.ClientRepository;
 import br.com.contasapagar.services.ClientService;
 import br.com.contasapagar.services.exceptions.ResourceAlreadyExistsException;
+import br.com.contasapagar.services.exceptions.ResourceNotExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -43,22 +44,21 @@ public class ClientServiceImpl implements ClientService {
     @Override
     @Transactional(readOnly = true)
     public Page<ClientDto> findAllPaged(Pageable pageable, String name) {
-        System.out.println(name);
         if (name.equalsIgnoreCase("")) {
             return this.clientRepository.findAll(pageable).map(ClientMapper::mapEntityToDto);
         } else {
             List<Client> sortedClients = clientRepository.searchClientsByName(name.toLowerCase());
-            for (Client i : sortedClients) {
-                System.out.println("SELECT ITEM" + i);
-            }
             PageImpl<Client> pageImpl = new PageImpl<>(sortedClients, pageable, sortedClients.size());
             return pageImpl.map(ClientMapper::mapEntityToDto);
         }
     }
 
     @Override
-    public ClientDto findClientById(Long id) {
-        return null;
+    @Transactional(readOnly = true)
+    public ClientDto findClientById(String id) {
+        Optional<Client> findClientById = clientRepository.findById(UUID.fromString(id));
+        Client clientExists = findClientById.orElseThrow(() -> new ResourceNotExistsException("Id not found!"));
+        return ClientMapper.mapEntityToDto(clientExists);
     }
 
     @Override

@@ -3,7 +3,7 @@ version: '3.9'
 services:
   postgresDb:
     restart: always
-    image: postgres:16
+    image: postgres:15-alpine
     environment:
       POSTGRES_USER: ${DB_LOCAL_USER}
       POSTGRES_PASSWORD: ${DB_LOCAL_PASSWORD}
@@ -11,7 +11,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - pgdata:/var/lib/postgresql/
+      - pgdata:/var/lib/postgresql
     networks:
       - contasapp_net
 

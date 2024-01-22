@@ -32,8 +32,14 @@ public class ClientController {
     @GetMapping("/clients")
     public ResponseEntity<Page<ClientDto>> findAllClientsPaged(
             Pageable pageable,
-            @RequestParam(name = "name", defaultValue = "", required = false) String name) {
+            @RequestParam(name = "name", defaultValue = "", required = false) String name
+    ) {
         return ResponseEntity.status(HttpStatus.OK).body(this.clientServiceImpl.findAllPaged(pageable, name));
+    }
+
+    @GetMapping("clients/{id}")
+    public ResponseEntity<ClientDto> findClientById(@PathVariable String id){
+        return ResponseEntity.status(HttpStatus.OK).body(this.clientServiceImpl.findClientById(id));
     }
 
 }
