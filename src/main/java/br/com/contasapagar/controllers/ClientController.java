@@ -38,14 +38,18 @@ public class ClientController {
     }
 
     @GetMapping("clients/{id}")
-    public ResponseEntity<ClientDto> findClientById(@PathVariable String id){
+    public ResponseEntity<ClientDto> findClientById(@PathVariable String id) {
         return ResponseEntity.status(HttpStatus.OK).body(this.clientServiceImpl.findClientById(id));
     }
 
     @DeleteMapping("clients/{id}")
-    public ResponseEntity<Void> deleteClientById(@PathVariable String id){
+    public ResponseEntity<Void> deleteClientById(@PathVariable String id) {
         this.clientServiceImpl.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @PutMapping("/clients/{id}")
+    public ResponseEntity<ClientDto> updateClientById(@Valid @PathVariable Long id, @RequestBody ClientDto dto) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.clientServiceImpl.updateClient(id, dto));
+    }
 }

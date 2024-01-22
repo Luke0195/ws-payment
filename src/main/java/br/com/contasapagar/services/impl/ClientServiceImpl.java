@@ -69,11 +69,11 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void delete(String id) {
-        try{
-          Optional<Client> findClientById = clientRepository.findById(UUID.fromString(id));
-          if(findClientById.isEmpty()) throw new ResourceNotExistsException("Id not found!");
-          this.clientRepository.deleteById(findClientById.get().getId());
-        }catch (EmptyResultDataAccessException e){
+        try {
+            Optional<Client> findClientById = clientRepository.findById(UUID.fromString(id));
+            if (findClientById.isEmpty()) throw new ResourceNotExistsException("Id not found!");
+            this.clientRepository.deleteById(findClientById.get().getId());
+        } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotExistsException("Id not found");
         }
 

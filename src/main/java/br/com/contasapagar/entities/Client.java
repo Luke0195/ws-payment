@@ -14,7 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name="tb_client")
+@Table(name = "tb_client")
 public class Client implements Serializable {
 
     @Id
@@ -27,7 +27,7 @@ public class Client implements Serializable {
     private String email;
     private String phone;
     private String address;
-    @Column(name="sub_locality")
+    @Column(name = "sub_locality")
     private String sublocality;
     private String city;
 }
