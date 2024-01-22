@@ -2,11 +2,10 @@ package br.com.contasapagar.dtos;
 
 import br.com.contasapagar.entities.Client;
 import br.com.contasapagar.entities.Payment;
-import br.com.contasapagar.entities.enums.BillStatus;
-import br.com.contasapagar.entities.enums.BillType;
-import br.com.contasapagar.entities.enums.PaymentStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,21 +23,37 @@ import java.util.UUID;
 public class BillDto implements Serializable {
 
     private UUID id;
+    @NotBlank(message = "The field description must be required")
     private String description;
+
+    @NotBlank(message="The field validate_date must be required")
     @JsonProperty("validate_date")
     private LocalDate  validateDate;
+
     @JsonProperty("payment_date")
+    @NotBlank(message="the field payment_date must be required")
     private LocalDate paymentDate;
+
+    @Size(min = 0, max=100000000, message = "The field price must be required")
     private BigDecimal price;
+
     @JsonProperty("amount_paid")
+    @Size(min = 0, max=100000000, message = "The field price must be required")
     private BigDecimal amountPaid;
+
     @JsonProperty("bill_type")
-    private BillType billType;
+    private Long billType;
+
     @JsonProperty("bill_status")
-    private BillStatus billStatus;
+    private Long billStatus;
+
     @JsonProperty("payment_status")
-    private PaymentStatus paymentStatus;
+    private Long paymentStatus;
+
+    @NotBlank(message="The field client must be required")
     private Client client;
+
+    @NotBlank(message="The field payment must be required")
     private Payment payment;
 
 }
