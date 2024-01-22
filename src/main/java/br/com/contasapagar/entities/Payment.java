@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -20,4 +22,6 @@ public class Payment implements Serializable {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
+    @OneToMany(mappedBy = "payment")
+    private List<Bill> billList = new ArrayList<>();
 }

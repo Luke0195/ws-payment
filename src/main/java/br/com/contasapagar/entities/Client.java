@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -30,4 +32,6 @@ public class Client implements Serializable {
     @Column(name = "sub_locality")
     private String sublocality;
     private String city;
+    @OneToMany(mappedBy ="client")
+    private List<Bill> billList = new ArrayList<>();
 }
