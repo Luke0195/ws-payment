@@ -17,10 +17,12 @@ import java.net.URI;
 @RequestMapping(value = "/v1")
 public class ClientController {
     private final ClientServiceImpl clientServiceImpl;
+
     @Autowired
     public ClientController(ClientServiceImpl clientServiceImpl) {
         this.clientServiceImpl = clientServiceImpl;
     }
+
     @PostMapping("/client")
     public ResponseEntity<ClientDto> insertClient(@Valid @RequestBody ClientDto dto) {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
@@ -30,8 +32,8 @@ public class ClientController {
     @GetMapping("/clients")
     public ResponseEntity<Page<ClientDto>> findAllClientsPaged(
             Pageable pageable,
-            @RequestParam(name="name", defaultValue = "", required = false) String name){
-         return ResponseEntity.status(HttpStatus.OK).body(this.clientServiceImpl.findAllPaged(pageable,name));
+            @RequestParam(name = "name", defaultValue = "", required = false) String name) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.clientServiceImpl.findAllPaged(pageable, name));
     }
 
 }

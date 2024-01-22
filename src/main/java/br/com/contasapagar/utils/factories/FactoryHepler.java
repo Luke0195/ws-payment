@@ -8,10 +8,11 @@ import java.util.List;
 
 public final class FactoryHepler {
 
-    private FactoryHepler(){};
+    private FactoryHepler() {
+    }
 
 
-    public static StandardErrorDto mapDtoWithNotListErrors(Integer status, String error, String path, String message){
+    public static StandardErrorDto mapDtoWithNotListErrors(Integer status, String error, String path, String message) {
         return StandardErrorDto
                 .builder()
                 .timestamp(Instant.now())
@@ -25,7 +26,7 @@ public final class FactoryHepler {
     public static StandardErrorDto mapDtoWithValidationListError(
             Integer status, String error,
             String path, String message,
-            List<FieldErrorValidation> fields){
+            List<FieldErrorValidation> fields) {
         return StandardErrorDto
                 .builder()
                 .timestamp(Instant.now())

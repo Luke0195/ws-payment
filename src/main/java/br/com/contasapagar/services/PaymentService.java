@@ -7,5 +7,6 @@ import java.util.List;
 public interface PaymentService {
 
     PaymentDto create(PaymentDto dto);
+
     List<PaymentDto> findAll();
 }

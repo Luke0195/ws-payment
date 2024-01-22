@@ -16,16 +16,17 @@ Campos obrigatório para criação de um Cliente.
 > #### Requisitos Funcionais.
 
 * [X] O sistema deve permitir o usuário listar todos os usuários
-* [ ] O sistema deve permitir listar os usuários paginados.
-* [ ] O sistema deve ter um filtro de busca por nome.
-* [ ] O sistema deve permitir a criação de um cliente.
+* [X] O sistema deve permitir listar os usuários paginados.
+* [X] O sistema deve ter um filtro de busca por nome.
+* [ ] O sistema deve pesquisar o usuário por id.
+* [X] O sistema deve permitir a criação de um cliente.
 * [ ] O sistema deve permitir que o usuário possa deletar um registro.
 * [ ] O sistema deve permitir que o usuário possa atualizar um registro.
 
 
 > #### Requisitos não Funcionais.
-* [ ] O sistema não deve permitir cadastrar um cliente com um código já existente.
-* [ ] O sistema não deve permitir cadastrar um cliente com um email já existente.
-* [ ] O sistema não deve permitir cadastrar um cliente com um nome vazio ou nulo.
-* [ ] O sistema não deve permitir cadastrar um cliente com um code vazio ou nulo.
-* [ ] O sistema não deve permitir cadastrar um cliente com um email vazio ou nulo.
+* [X] O sistema não deve permitir cadastrar um cliente com um código já existente.
+* [X] O sistema não deve permitir cadastrar um cliente com um email já existente.
+* [X] O sistema não deve permitir cadastrar um cliente com um nome vazio ou nulo.
+* [X] O sistema não deve permitir cadastrar um cliente com um code vazio ou nulo.
+* [X] O sistema não deve permitir cadastrar um cliente com um email vazio ou nulo.

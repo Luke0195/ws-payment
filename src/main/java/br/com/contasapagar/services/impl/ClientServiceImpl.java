@@ -22,8 +22,9 @@ import java.util.Optional;
 public class ClientServiceImpl implements ClientService {
 
     private final ClientRepository clientRepository;
+
     @Autowired
-    public ClientServiceImpl(ClientRepository clientRepository){
+    public ClientServiceImpl(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
 
@@ -31,10 +32,10 @@ public class ClientServiceImpl implements ClientService {
     @Transactional
     public ClientDto createClient(ClientDto dto) {
         Optional<Client> clientAlreadyExists = clientRepository.findByCode(dto.getCode());
-        if(clientAlreadyExists.isPresent()) throw new ResourceAlreadyExistsException("This code was already taken!");
+        if (clientAlreadyExists.isPresent()) throw new ResourceAlreadyExistsException("This code was already taken!");
         clientAlreadyExists = clientRepository.findByEmail(dto.getEmail());
-        if(clientAlreadyExists.isPresent()) throw new ResourceAlreadyExistsException("This email was already taken!");
-        Client  client = ClientMapper.mapDtoToEntity(dto);
+        if (clientAlreadyExists.isPresent()) throw new ResourceAlreadyExistsException("This email was already taken!");
+        Client client = ClientMapper.mapDtoToEntity(dto);
         client = clientRepository.save(client);
         return ClientMapper.mapEntityToDto(client);
     }
@@ -43,15 +44,15 @@ public class ClientServiceImpl implements ClientService {
     @Transactional(readOnly = true)
     public Page<ClientDto> findAllPaged(Pageable pageable, String name) {
         System.out.println(name);
-        if(name.equalsIgnoreCase("")){
+        if (name.equalsIgnoreCase("")) {
             return this.clientRepository.findAll(pageable).map(ClientMapper::mapEntityToDto);
-        }else{
-           List<Client> sortedClients = clientRepository.searchClientsByName(name.toLowerCase());
-           for(Client i: sortedClients){
-               System.out.println("SELECT ITEM"+  i);
-           }
-           PageImpl<Client> pageImpl = new PageImpl<>(sortedClients,pageable, sortedClients.size());
-           return pageImpl.map(ClientMapper::mapEntityToDto);
+        } else {
+            List<Client> sortedClients = clientRepository.searchClientsByName(name.toLowerCase());
+            for (Client i : sortedClients) {
+                System.out.println("SELECT ITEM" + i);
+            }
+            PageImpl<Client> pageImpl = new PageImpl<>(sortedClients, pageable, sortedClients.size());
+            return pageImpl.map(ClientMapper::mapEntityToDto);
         }
     }
 

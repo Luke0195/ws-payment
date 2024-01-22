@@ -23,9 +23,9 @@ import java.util.UUID;
 @Builder
 public class ClientDto implements Serializable {
     private UUID id;
-    @NotBlank(message="The field name must be required")
+    @NotBlank(message = "The field name must be required")
     private String name;
-    @NotBlank(message="The filed code must be required")
+    @NotBlank(message = "The filed code must be required")
     private String code;
     @Email(message = "Please provided a valid email")
     @NotBlank(message = "The field email must be required")

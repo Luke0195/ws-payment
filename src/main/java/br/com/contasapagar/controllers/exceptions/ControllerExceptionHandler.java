@@ -20,7 +20,7 @@ import java.util.List;
 public class ControllerExceptionHandler {
 
     @ExceptionHandler(ResourceAlreadyExistsException.class)
-    public ResponseEntity<StandardErrorDto> entityAlreadyExists(HttpServletRequest request, ResourceAlreadyExistsException e){
+    public ResponseEntity<StandardErrorDto> entityAlreadyExists(HttpServletRequest request, ResourceAlreadyExistsException e) {
         StandardErrorDto error = FactoryHepler.mapDtoWithNotListErrors(
                 getHttpStatus(HttpStatus.BAD_REQUEST),
                 "This entity already exists!",
@@ -30,9 +30,9 @@ public class ControllerExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<StandardErrorDto> fieldValidationError(HttpServletRequest request, MethodArgumentNotValidException e){
+    public ResponseEntity<StandardErrorDto> fieldValidationError(HttpServletRequest request, MethodArgumentNotValidException e) {
         List<FieldErrorValidation> errors = new ArrayList<>();
-        e.getFieldErrors().forEach( x -> {
+        e.getFieldErrors().forEach(x -> {
             String fieldName = x.getField();
             String fieldDescription = x.getDefaultMessage();
             errors.add(FieldErrorValidation.builder().fieldName(fieldName).fieldDescription(fieldDescription).build());
@@ -45,11 +45,11 @@ public class ControllerExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
-    private static String getRequestUri(HttpServletRequest request){
+    private static String getRequestUri(HttpServletRequest request) {
         return request.getRequestURI();
     }
 
-    private static Integer getHttpStatus(HttpStatus status){
+    private static Integer getHttpStatus(HttpStatus status) {
         return status.value();
     }
 }

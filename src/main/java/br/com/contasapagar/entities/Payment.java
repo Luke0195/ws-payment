@@ -14,7 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name="tb_payment")
+@Table(name = "tb_payment")
 public class Payment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
