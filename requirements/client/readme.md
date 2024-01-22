@@ -18,10 +18,10 @@ Campos obrigatório para criação de um Cliente.
 * [X] O sistema deve permitir o usuário listar todos os usuários
 * [X] O sistema deve permitir listar os usuários paginados.
 * [X] O sistema deve ter um filtro de busca por nome.
-* [ ] O sistema deve pesquisar o usuário por id.
+* [X] O sistema deve pesquisar o usuário por id.
 * [X] O sistema deve permitir a criação de um cliente.
-* [ ] O sistema deve permitir que o usuário possa deletar um registro.
-* [ ] O sistema deve permitir que o usuário possa atualizar um registro.
+* [X] O sistema deve permitir que o usuário possa deletar um registro.
+* [X] O sistema deve permitir que o usuário possa atualizar um registro.
 
 
 > #### Requisitos não Funcionais.

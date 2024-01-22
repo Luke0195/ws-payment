@@ -49,7 +49,7 @@ public class ClientController {
     }
 
     @PutMapping("/clients/{id}")
-    public ResponseEntity<ClientDto> updateClientById(@Valid @PathVariable Long id, @RequestBody ClientDto dto) {
+    public ResponseEntity<ClientDto> updateClientById(@Valid @PathVariable String id, @RequestBody ClientDto dto) {
         return ResponseEntity.status(HttpStatus.OK).body(this.clientServiceImpl.updateClient(id, dto));
     }
 }

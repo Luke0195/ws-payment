@@ -12,7 +12,7 @@ public interface ClientService {
 
     ClientDto findClientById(String id);
 
-    ClientDto updateClient(Long id, ClientDto dto);
+    ClientDto updateClient(String id, ClientDto dto);
 
     void delete(String id);
 }
